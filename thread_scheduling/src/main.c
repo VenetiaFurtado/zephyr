@@ -1,8 +1,8 @@
 #include <zephyr/kernel.h>
 #include <zephyr/sys/printk.h>
-//#include <zephyr/logging/log.h>
+#include <zephyr/logging/log.h>
 
-//LOG_MODULE_REGISTER(thread_scheduling, LOG_LEVEL_INF);  // Register module with INFO level
+LOG_MODULE_REGISTER(thread_scheduling, LOG_LEVEL_INF);  // Register module with INFO level
 
 #define STACK_SIZE 1024
 #define PRIORITY_THREAD1 3
@@ -17,7 +17,7 @@ struct k_thread thread2_data;
 void thread1_fn(void *a, void *b, void *c)
 {
     while (1) {
-        printk(">>> Thread 1 is running\n");
+        LOG_INF(">>> Thread 1 is running\n");
         k_sleep(K_MSEC(2000));
     }
 }
@@ -25,7 +25,7 @@ void thread1_fn(void *a, void *b, void *c)
 void thread2_fn(void *a, void *b, void *c)
 {
     while (1) {
-        printk(">>> Thread 2 is running\n");
+        LOG_INF(">>> Thread 2 is running\n");
         k_sleep(K_MSEC(2000));
     }
 }
